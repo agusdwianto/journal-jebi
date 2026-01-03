@@ -2,53 +2,41 @@
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{cuted} % WAJIB ADA untuk header gambar
+\usepackage{xcolor}
 
-% Mengatur margin agar pas dengan header gambar
 \geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
-
 \journal{Journal Economic Business Innovation (JEBI)}
 
 \begin{document}
 
-%%% --- HEADER CUSTOM JEBI --- %%%
 \begin{strip}
 \begin{minipage}[t]{0.2\textwidth}
-    \includegraphics[width=\textwidth]{logo_jebi.jpg} % Pojok Kiri
+    \includegraphics[width=\textwidth]{logo_jebi.jpg} 
 \end{minipage}
 \begin{minipage}[t]{0.6\textwidth}
     \centering
-    \includegraphics[width=0.8\textwidth]{homepage_jebi.jpg} % Tengah
+    \includegraphics[width=0.8\textwidth]{homepage_jebi.jpg}
 \end{minipage}
 \begin{minipage}[t]{0.2\textwidth}
     \raggedleft
-    \includegraphics[width=0.8\textwidth]{cover_jebi.jpg} % Pojok Kanan
+    \includegraphics[width=0.8\textwidth]{cover_jebi.jpg}
 \end{minipage}
 \vspace{5pt}
 \hrule
 \end{strip}
-%%% -------------------------- %%%
 
 \begin{frontmatter}
-
 \title{Judul Artikel Jurnal JEBI Anda}
-
-\author{Nama Penulis Pertama\corref{cor1}}
-\ead{email@analisisdata.co.id}
-\author{Nama Penulis Kedua}
-
+\author{Penulis Utama\corref{cor1}}
+\ead{admin@analysisdata.co.id}
 \address{Inovasi Analisis Data, Semarang, Indonesia}
 
 \begin{abstract}
-Abstrak ini akan tampil dalam format dua kolom yang rapi di bawah header khusus JEBI yang baru saja kita buat. Format ini mengikuti standar publikasi internasional.
+Format ini sudah disesuaikan agar logo dan cover muncul otomatis di bagian atas.
 \end{abstract}
-
-\begin{keyword}
-Inovasi \sep Bisnis \sep Ekonomi \sep JEBI
-\end{keyword}
-
 \end{frontmatter}
 
 \section{Introduction}
-Teks pendahuluan Anda di sini. Robot GitHub akan otomatis mencetak logo dan cover di bagian atas halaman pertama.
-
+Teks artikel dimulai di sini.
 \end{document}
