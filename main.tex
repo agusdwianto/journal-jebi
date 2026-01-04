@@ -1,52 +1,42 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
 % =========================================================
-% FULL FINAL — Elsevier/JBR-like layout + APA 7
+%  TEMPLATE "ANTI-GAGAL" JEBI / ELSEVIER
+%  Gunakan ini untuk tes build pertama kali.
 % =========================================================
 
-% ---------- Language & Typography ----------
+% 1. Paket Standar
 \usepackage[english]{babel}
 \usepackage{microtype}
-
-% ---------- Layout ----------
 \usepackage{geometry}
 \geometry{a4paper,left=1.6cm,right=1.6cm,top=2.0cm,bottom=2.0cm}
 
-% ---------- Graphics / Tables ----------
+% 2. Grafik & Tabel
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{threeparttable}
-\usepackage{cuted} % full-width strip for top banner
+\usepackage{cuted} % Untuk header lebar penuh (strip)
 
-% ---------- Links ----------
+% 3. Link PDF
 \usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  citecolor=blue,
-  urlcolor=blue,
-  pdftitle={Journal Economic Business Innovation (JEBI)},
-  pdfauthor={JEBI Authors}
-}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
-% ---------- APA 7 citations ----------
+% 4. Sitasi (APA Style)
 \usepackage[authoryear,round]{natbib}
-\biboptions{authoryear,round,semicolon}
 \bibliographystyle{elsarticle-harv}
 
-% ---------- Journal Identity ----------
+% 5. Identitas Jurnal
 \journal{Journal Economic Business Innovation (JEBI)}
-
 \newcommand{\TopLineLeft}{Journal of Business Research 202 (2026) 115796}
-\newcommand{\TopLineURL}{\href{https://www.elsevier.com/locate/jbusres}{www.elsevier.com/locate/jbusres}}
 
 \begin{document}
 
 % =========================================================
-% TOP BANNER
+%  HEADER / BRANDING (SAFE MODE)
+%  Saya ganti gambar dengan KOTAK KOSONG (\framebox)
+%  agar GitHub tidak error mencari file gambar yg belum ada.
 % =========================================================
 \begin{strip}
-  \vspace{-1.2cm}
+  \vspace{-1.5cm}
   \noindent\centering
   {\small \TopLineLeft}\par
   \vspace{6pt}
@@ -54,23 +44,26 @@
   \vspace{10pt}
 
   \noindent
-  % Placeholder jika gambar error/tidak ada
+  % --- Logo Kiri ---
   \begin{minipage}[c]{0.18\textwidth}
-    \includegraphics[width=\textwidth]{logo_jebi.jpg}
+    \centering
+    \framebox[\textwidth][c]{\textbf{LOGO HERE}} 
+    % Nanti jika file sudah ada, ganti baris atas dengan:
+    % \includegraphics[width=\textwidth]{logo_jebi.jpg}
   \end{minipage}\hfill
+  % --- Teks Tengah ---
   \begin{minipage}[c]{0.64\textwidth}
     \centering
     {\small Contents lists available at \textbf{ScienceDirect}}\par
     \vspace{4pt}
     {\Large \textbf{Journal of Business Research}}\par
     \vspace{4pt}
-    {\small journal homepage:\ \TopLineURL}\par
-    \vspace{6pt}
-    \includegraphics[width=0.92\textwidth]{homepage_jebi.jpg}
+    \framebox[0.9\textwidth][c]{BANNER HOMEPAGE HERE}
   \end{minipage}\hfill
+  % --- Cover Kanan ---
   \begin{minipage}[c]{0.14\textwidth}
     \raggedleft
-    \includegraphics[width=\textwidth]{cover_jebi.jpg}
+    \framebox[\textwidth][c]{\textbf{COVER}}
   \end{minipage}
 
   \vspace{10pt}
@@ -79,129 +72,83 @@
 \end{strip}
 
 % =========================================================
-% FRONTMATTER
+%  JUDUL & PENULIS (Copy dari Word ke sini)
 % =========================================================
 \begin{frontmatter}
 
-\title{Digital transformation as a multi-phase process: A longitudinal study of corporate strategy and business unit adaptation}
+\title{Judul Artikel Dari File Word Penulis Masukkan Disini}
 
-\author[inst1]{First Author Name\corref{cor1}}
-\ead{first.author@domain.com}
-
-\author[inst2]{Second Author Name}
-\ead{second.author@domain.com}
+\author[1]{Nama Penulis Satu\corref{cor1}}
+\ead{email@domain.com}
+\author[2]{Nama Penulis Dua}
 
 \cortext[cor1]{Corresponding author.}
+\address[1]{Afiliasi Penulis Satu, Kota, Negara}
+\address[2]{Afiliasi Penulis Dua, Kota, Negara}
 
-\address[inst1]{PT. Inovasi Analisis Data, Semarang 50266, Indonesia}
-\address[inst2]{Department of Management, University Name, City, Country}
-
-\begin{keyword}
-Digital transformation \sep Corporate strategy \sep Organizational adaptation \sep Business unit adaptation \sep Process perspective
-\end{keyword}
-
+% Abstract dikosongkan disini, kita pakai layout khusus di bawah
 \end{frontmatter}
 
 % =========================================================
-% ARTICLE INFO & ABSTRACT BLOCK
+%  ABSTRAK & INFO ARTIKEL (Gaya JBR)
 % =========================================================
 \begin{strip}
   \noindent\rule{\textwidth}{0.4pt}
   \vspace{6pt}
-
   \noindent
   \begin{minipage}[t]{0.30\textwidth}
     \textbf{\small ARTICLE INFO}\par
-    \vspace{4pt}
     \small
     \textit{Keywords:}\par
     Digital transformation\par
-    Corporate strategy\par
-    Organizational tension\par
-    Structural adjustment\par
-    Business unit adaptation\par
-    Process perspective\par
-    \vspace{8pt}
+    Strategy\par
+    Innovation\par
+    \vspace{6pt}
     \textit{Article history:}\par
-    Received DD Month YYYY\par
-    Revised DD Month YYYY\par
-    Accepted DD Month YYYY\par
-    Available online DD Month YYYY\par
-  \end{minipage}
+    Received 2026\par
+    Accepted 2026\par
+  \end{minipage}%
   \hfill
   \begin{minipage}[t]{0.66\textwidth}
     \textbf{\small ABSTRACT}\par
-    \vspace{4pt}
     \small
-    This study investigates how digital transformation unfolds over time within organizations.
-    Drawing on a longitudinal design, we trace key phases of experimentation, consolidation, and acceleration.
-    We identify recurring tensions between corporate strategy and business unit adaptation and show how structural
-    adjustments and capability building shape outcomes. The findings advance process-oriented perspectives on strategy
-    and provide implications for managers and policymakers.
+    % --- PASTE ABSTRAK DARI WORD DI BAWAH INI ---
+    Ini adalah tempat Anda menempelkan (paste) abstrak dari file Word penulis. 
+    Bagian ini akan tampil melebar dan rapi sesuai standar Elsevier. 
+    Pastikan Anda tidak menghapus perintah `minipage` di sekitarnya.
+    % ---------------------------------------------
   \end{minipage}
-
   \vspace{6pt}
   \noindent\rule{\textwidth}{0.4pt}
   \vspace{10pt}
 \end{strip}
 
 % =========================================================
-% MAIN MANUSCRIPT
+%  ISI NASKAH (Copy-Paste dari Word per Bab)
 % =========================================================
 
 \section{Introduction}
-Emerging digital technologies create disruptive challenges. 
-Prior studies emphasize that public support for climate action can be improved through multilateralism \citep{BechtelScheveVanLieshout2022}.
-Moreover, understanding public support is crucial for global collective goods \citep{BeiserMcGrathBernauerSongUji2021}.
+% Paste Pendahuluan dari Word di sini
+Ini adalah contoh paragraf pendahuluan. Dalam proses layout, Anda mengambil teks dari Word dan menempelkannya di sini. Jangan lupa untuk menambahkan sitasi dengan perintah seperti ini \citep{Vial2019}.
 
-\section{Literature review}
-Recent research highlights the importance of trust and state effectiveness. For instance, \citet{BesleyDray2024a} discuss the political economy of compliance.
-Other studies focus on flood risk perception \citep{BhattiRanaRoutray2023}.
-
-Further research indicates that carbon taxes vary across countries \citep{BulutSamuel2025}. 
-Additionally, \citet{Carattini2022} outlines the political challenges in developing countries.
-Issues regarding dental care access have also been explored \citep{ClermontNietoAlpertYaoCothron2025}.
-
-\subsection{Economic Perspectives}
-The "Yellow Vests" movement highlighted pessimistic beliefs regarding policies \citep{DouenneFabre2022}.
-Previous surveys have analyzed public views on economic growth \citep{DrewsVanDenBergh2016a, DrewsVanDenBergh2016b}.
-Trust in politicians remains a key factor \citep{HammarJagers2006}.
+\section{Literature Review}
+% Paste Tinjauan Pustaka di sini
+Penelitian terdahulu menunjukkan hasil yang beragam. Menurut \citet{Verhoef2021}, transformasi digital adalah kunci.
 
 \section{Methodology}
-Describe the research design, data, and analysis.
+% Paste Metodologi di sini
+Jelaskan metode penelitian di sini.
 
 \section{Results}
-Present results with tables/figures.
-
-\begin{table}[t]
-\centering
-\caption{Example table (professional style)}
-\begin{threeparttable}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Variable} & \textbf{Coefficient} & \textbf{$p$-value} \\
-\midrule
-Digital adoption & 0.45 & < .05 \\
-Market agility   & 0.32 & < .01 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes}\small
-\item Notes: Report robust standard errors if applicable.
-\end{tablenotes}
-\end{threeparttable}
-\end{table}
-
-\section{Discussion}
-Interpret results, compare with literature, and outline implications.
+% Paste Hasil di sini
+Tuliskan hasil penelitian.
 
 \section{Conclusion}
-Summarize contributions, limitations, and future research directions.
-
-\section*{Declaration of competing interest}
-The authors declare no competing interests.
+% Paste Kesimpulan di sini
+Tuliskan kesimpulan.
 
 % =========================================================
-% REFERENCES
+%  DAFTAR PUSTAKA
 % =========================================================
 \bibliography{references}
 
