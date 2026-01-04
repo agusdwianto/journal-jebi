@@ -1,42 +1,132 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+% --- Standard Packages & Encoding ---
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel} % Set to English for academic standard
+\usepackage{microtype}      % Improves text justification
+\usepackage{lipsum}         % For dummy text generation (optional)
+
+% --- Graphics & Layout Packages ---
 \usepackage{graphicx}
 \usepackage{geometry}
-\usepackage{cuted} % WAJIB ADA untuk header gambar
+\usepackage{cuted}          % REQUIRED: For full-width headers in two-column mode
 \usepackage{xcolor}
+\usepackage{booktabs}       % For professional looking tables
 
+% --- Hyperlink Setup (Clickable PDF) ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={Journal Economic Business Innovation (JEBI)},
+    pdfauthor={JEBI Author}
+}
+
+% --- Margin Configuration ---
 \geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
+
+% --- Journal Identity ---
 \journal{Journal Economic Business Innovation (JEBI)}
 
 \begin{document}
 
+% === JEBI CUSTOM BRANDING HEADER ===
 \begin{strip}
-\begin{minipage}[t]{0.2\textwidth}
-    \includegraphics[width=\textwidth]{logo_jebi.jpg} 
-\end{minipage}
-\begin{minipage}[t]{0.6\textwidth}
-    \centering
-    \includegraphics[width=0.8\textwidth]{homepage_jebi.jpg}
-\end{minipage}
-\begin{minipage}[t]{0.2\textwidth}
-    \raggedleft
-    \includegraphics[width=0.8\textwidth]{cover_jebi.jpg}
-\end{minipage}
-\vspace{5pt}
-\hrule
+    \vspace{-1.5cm}
+    \noindent
+    \begin{minipage}[c]{0.18\textwidth}
+        \includegraphics[width=\textwidth]{logo_jebi.jpg} 
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.60\textwidth}
+        \centering
+        \includegraphics[width=0.95\textwidth]{homepage_jebi.jpg}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[c]{0.18\textwidth}
+        \raggedleft
+        \includegraphics[width=\textwidth]{cover_jebi.jpg}
+    \end{minipage}
+    \vspace{5pt}
+    \hrule height 1pt
+    \vspace{10pt}
 \end{strip}
+% ===================================
 
 \begin{frontmatter}
-\title{Judul Artikel Jurnal JEBI Anda}
-\author{Penulis Utama\corref{cor1}}
-\ead{admin@analysisdata.co.id}
-\address{Inovasi Analisis Data, Semarang, Indonesia}
 
+% --- Title ---
+\title{Digital Transformation in Emerging Markets: A Strategic Framework for Sustainable Economic Growth}
+
+% --- Authors & Affiliations ---
+\author[1]{First Author Name\corref{cor1}}
+\ead{author@analysisdata.co.id}
+
+\author[2]{Second Author Name}
+
+\cortext[cor1]{Corresponding author}
+
+\address[1]{PT. Inovasi Analisis Data, Semarang 50266, Indonesia}
+\address[2]{Department of Economics, University Name, Country}
+
+% --- Abstract ---
 \begin{abstract}
-Format ini sudah disesuaikan agar logo dan cover muncul otomatis di bagian atas.
+\textbf{Purpose:} This study aims to investigate the impact of digital transformation strategies on the economic sustainability of emerging markets. 
+\textbf{Design/methodology/approach:} Using a quantitative approach, data were collected from 150 geographically diverse samples and analyzed using structural equation modeling.
+\textbf{Findings:} The results indicate a significant positive correlation between digital infrastructure investment and long-term business resilience.
+\textbf{Originality/value:} This research provides a novel framework for policymakers in developing regions to integrate technology into traditional economic sectors.
 \end{abstract}
+
+% --- Keywords ---
+\begin{keyword}
+Digital Economy \sep Business Strategy \sep Innovation \sep Sustainability \sep JEBI
+\end{keyword}
+
 \end{frontmatter}
 
+% === MAIN MANUSCRIPT CONTENT ===
+
 \section{Introduction}
-Teks artikel dimulai di sini.
+The rapid evolution of digital technology has fundamentally altered the global economic landscape. In the context of emerging markets, this transformation presents both significant challenges and unprecedented opportunities. As noted in recent studies, the integration of digital tools is essential for modern business survival \cite{JEBI2026}.
+
+This paper explores the intersection of economic policy and business innovation. By leveraging the framework established by the \textit{Journal Economic Business Innovation} (JEBI), we aim to provide empirical evidence supporting digital adoption.
+
+\section{Literature Review}
+\subsection{Theories of Economic Innovation}
+Innovation theory suggests that technological advancement is the primary driver of economic growth. Previous research has demonstrated that companies adopting agile methodologies outperform their traditional counterparts.
+
+\subsection{Business Resilience in the Digital Age}
+Resilience is defined as the capacity to recover quickly from difficulties. In a business context, this involves the ability to pivot strategies in response to market disruptions.
+
+\section{Methodology}
+This study employs a descriptive quantitative method. Data collection was conducted through structured surveys distributed to industry leaders in Semarang and surrounding areas.
+
+\section{Results and Discussion}
+The analysis reveals that 75\% of respondents believe digital innovation is critical. 
+\begin{table}[h]
+    \centering
+    \caption{Impact of Innovation on Revenue}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Variable} & \textbf{Coefficient} & \textbf{P-Value} \\
+        \midrule
+        Digital Adoption & 0.45 & < 0.05 \\
+        Market Agility   & 0.32 & < 0.01 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+As shown in Table 1, there is a strong statistical significance. This supports the hypothesis that innovation directly influences revenue streams.
+
+\section{Conclusion}
+In conclusion, this study confirms that digital transformation is not merely a trend but a necessity for economic sustainability. Future research should focus on the specific barriers to entry for small enterprises.
+
+% === AUTOMATED BIBLIOGRAPHY ===
+% This will pull data from references.bib automatically
+\bibliographystyle{elsarticle-num} 
+\bibliography{references}
+
 \end{document}
