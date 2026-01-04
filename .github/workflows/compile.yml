@@ -3,8 +3,6 @@ name: Build LaTeX PDF (Auto RIS Convert)
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -19,35 +17,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. AMBIL FILE DARI GITHUB
-      # Saya ubah ke @v4 karena @v6 belum ada (penyebab error sebelumnya)
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. KONVERSI RIS KE BIBTEX (OTOMATIS)
-      # Bagian ini yang mengubah file RIS dari penulis menjadi BibTeX
-      - name: Install Pandoc & Convert RIS
-        run: |
-          sudo apt-get update && sudo apt-get install -y pandoc
-          if [ -f "citations.ris" ]; then
-            echo "File citations.ris ditemukan. Sedang dikonversi..."
-            pandoc citations.ris -t bibtex -o references.bib
-            echo "Sukses! references.bib berhasil dibuat."
-          else
-            echo "Tidak ada file citations.ris. Menggunakan references.bib bawaan."
-          fi
-
-      # 3. COMPILE LATEX KE PDF
-      - name: Compile LaTeX document (XeLaTeX)
-        uses: xu-cheng/latex-action@v4
+      - name: Compile LaTeX (XeLaTeX + BibTeX)
+        uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
           latexmk_use_xelatex: true
-          # Argumen agar compile lebih stabil
-          args: "-file-line-error -halt-on-error -interaction=nonstopmode"
+          args: -interaction=nonstopmode -file-line-error
 
-      # 4. UPLOAD PDF AGAR BISA DIDOWNLOAD
-      # Saya ubah ke @v4 karena @v6 belum ada
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
@@ -56,13 +35,17 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      # 5. UPLOAD LOG ERROR (JIKA GAGAL)
       - name: Upload LaTeX logs (debug)
-        if: failure()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: latex-logs
           path: |
             *.log
             *.blg
-          retention-days: 3
+            *.bbl
+            *.aux
+            *.bcf
+            *.run.xml
+          if-no-files-found: ignore
+          retention-days: 7
