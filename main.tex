@@ -1,7 +1,7 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
 % =========================================================
-% CLEAN FINAL — Elsevier/JBR-like layout + APA 7 (author–year)
+% FULL FINAL — Elsevier/JBR-like layout + APA 7 (author–year)
 % Engine: XeLaTeX (recommended)
 % =========================================================
 
@@ -83,6 +83,8 @@
 
 % =========================================================
 % FRONTMATTER (Elsevier standard)
+% IMPORTANT: Abstract removed here to avoid duplicate abstract.
+% Abstract is shown in the JBR-style block below.
 % =========================================================
 \begin{frontmatter}
 
@@ -99,10 +101,6 @@
 \address[inst1]{PT. Inovasi Analisis Data, Semarang 50266, Indonesia}
 \address[inst2]{Department of Management, University Name, City, Country}
 
-\begin{abstract}
-This study investigates how digital transformation unfolds over time within organizations. Drawing on a longitudinal design, we trace key phases of experimentation, consolidation, and acceleration. We identify recurring tensions between corporate strategy and business unit adaptation and show how structural adjustments and capability building shape outcomes. The findings advance process-oriented perspectives on strategy and provide implications for managers and policymakers.
-\end{abstract}
-
 \begin{keyword}
 Digital transformation \sep Corporate strategy \sep Organizational adaptation \sep Business unit adaptation \sep Process perspective
 \end{keyword}
@@ -111,7 +109,7 @@ Digital transformation \sep Corporate strategy \sep Organizational adaptation \s
 
 % =========================================================
 % JBR-LIKE "ARTICLE INFO" (left) + "ABSTRACT" (right) row
-% (visual block; keep short)
+% (Visual block like the screenshot; keep it short)
 % =========================================================
 \begin{strip}
   \noindent\rule{\textwidth}{0.4pt}
@@ -141,7 +139,11 @@ Digital transformation \sep Corporate strategy \sep Organizational adaptation \s
     \textbf{\small ABSTRACT}\par
     \vspace{4pt}
     \small
-    This study examines how digital transformation unfolds over time and how organizations align strategy, structure, and execution. Using (method) and (data/source), we find that (key results). The study contributes by (main contribution) and offers implications for (practice/policy).
+    This study investigates how digital transformation unfolds over time within organizations.
+    Drawing on a longitudinal design, we trace key phases of experimentation, consolidation, and acceleration.
+    We identify recurring tensions between corporate strategy and business unit adaptation and show how structural
+    adjustments and capability building shape outcomes. The findings advance process-oriented perspectives on strategy
+    and provide implications for managers and policymakers.
   \end{minipage}
 
   \vspace{6pt}
@@ -151,6 +153,8 @@ Digital transformation \sep Corporate strategy \sep Organizational adaptation \s
 
 % =========================================================
 % MAIN MANUSCRIPT (Two-column)
+% NOTE: if your references.bib doesn't include these keys,
+% comment the citations or add matching BibTeX entries.
 % =========================================================
 \section{Introduction}
 Emerging digital technologies create disruptive challenges and opportunities for firms.
