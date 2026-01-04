@@ -1,51 +1,30 @@
-name: Build LaTeX PDF (Auto RIS Convert)
+name: Build JEBI Manuscript (Auto-PDF)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   workflow_dispatch:
-
-permissions:
-  contents: read
-
-concurrency:
-  group: latex-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Compile LaTeX (XeLaTeX + BibTeX)
+      - name: Compile LaTeX Document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-          latexmk_use_xelatex: true
-          args: -interaction=nonstopmode -file-line-error
+          # Menggunakan xelatex agar kompatibel dengan gambar dan font
+          compiler: latexmk
+          args: "-pdfxe -file-line-error -interaction=nonstopmode"
 
-      - name: Upload PDF artifact
+      - name: Upload PDF Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Artikel-JEBI-PDF
+          name: JEBI-Manuscript-PDF
           path: main.pdf
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
-
-      - name: Upload LaTeX logs (debug)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: latex-logs
-          path: |
-            *.log
-            *.blg
-            *.bbl
-            *.aux
-            *.bcf
-            *.run.xml
-          if-no-files-found: ignore
-          retention-days: 7
