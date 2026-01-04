@@ -1,8 +1,7 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
 % =========================================================
-% FULL FINAL — Elsevier/JBR-like layout + APA 7 (author–year)
-% Engine: XeLaTeX (recommended)
+% FULL FINAL — Elsevier/JBR-like layout + APA 7
 % =========================================================
 
 % ---------- Language & Typography ----------
@@ -17,7 +16,7 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{threeparttable}
-\usepackage{cuted} % full-width strip for top banner in two-column
+\usepackage{cuted} % full-width strip for top banner
 
 % ---------- Links ----------
 \usepackage{hyperref}
@@ -30,7 +29,7 @@
   pdfauthor={JEBI Authors}
 }
 
-% ---------- APA 7 author–year citations (Elsevier-compatible) ----------
+% ---------- APA 7 citations ----------
 \usepackage[authoryear,round]{natbib}
 \biboptions{authoryear,round,semicolon}
 \bibliographystyle{elsarticle-harv}
@@ -38,16 +37,13 @@
 % ---------- Journal Identity ----------
 \journal{Journal Economic Business Innovation (JEBI)}
 
-% ---------- Optional top line like JBR (edit as needed) ----------
 \newcommand{\TopLineLeft}{Journal of Business Research 202 (2026) 115796}
 \newcommand{\TopLineURL}{\href{https://www.elsevier.com/locate/jbusres}{www.elsevier.com/locate/jbusres}}
 
 \begin{document}
 
 % =========================================================
-% TOP BANNER (JBR-like) — uses your existing images
-% Files expected:
-%   logo_jebi.jpg, homepage_jebi.jpg, cover_jebi.jpg
+% TOP BANNER
 % =========================================================
 \begin{strip}
   \vspace{-1.2cm}
@@ -58,6 +54,7 @@
   \vspace{10pt}
 
   \noindent
+  % Placeholder jika gambar error/tidak ada
   \begin{minipage}[c]{0.18\textwidth}
     \includegraphics[width=\textwidth]{logo_jebi.jpg}
   \end{minipage}\hfill
@@ -82,9 +79,7 @@
 \end{strip}
 
 % =========================================================
-% FRONTMATTER (Elsevier standard)
-% IMPORTANT: Abstract removed here to avoid duplicate abstract.
-% Abstract is shown in the JBR-style block below.
+% FRONTMATTER
 % =========================================================
 \begin{frontmatter}
 
@@ -108,8 +103,7 @@ Digital transformation \sep Corporate strategy \sep Organizational adaptation \s
 \end{frontmatter}
 
 % =========================================================
-% JBR-LIKE "ARTICLE INFO" (left) + "ABSTRACT" (right) row
-% (Visual block like the screenshot; keep it short)
+% ARTICLE INFO & ABSTRACT BLOCK
 % =========================================================
 \begin{strip}
   \noindent\rule{\textwidth}{0.4pt}
@@ -152,21 +146,26 @@ Digital transformation \sep Corporate strategy \sep Organizational adaptation \s
 \end{strip}
 
 % =========================================================
-% MAIN MANUSCRIPT (Two-column)
-% NOTE: if your references.bib doesn't include these keys,
-% comment the citations or add matching BibTeX entries.
+% MAIN MANUSCRIPT
 % =========================================================
+
 \section{Introduction}
-Emerging digital technologies create disruptive challenges and opportunities for firms.
-Prior studies emphasize that digital transformation unfolds as a multi-phase process \citep{Vial2019,Warner2019}.
-According to \citet{Hanelt2021}, transformation initiatives often involve tensions between legacy structures and new capabilities.
+Emerging digital technologies create disruptive challenges. 
+Prior studies emphasize that public support for climate action can be improved through multilateralism \citep{BechtelScheveVanLieshout2022}.
+Moreover, understanding public support is crucial for global collective goods \citep{BeiserMcGrathBernauerSongUji2021}.
 
 \section{Literature review}
-Use APA author--year citations:
-\begin{itemize}
-  \item Narrative: \citet{Vial2019} argues that \dots
-  \item Parenthetical: \citep{Warner2019,Hanelt2021}
-\end{itemize}
+Recent research highlights the importance of trust and state effectiveness. For instance, \citet{BesleyDray2024a} discuss the political economy of compliance.
+Other studies focus on flood risk perception \citep{BhattiRanaRoutray2023}.
+
+Further research indicates that carbon taxes vary across countries \citep{BulutSamuel2025}. 
+Additionally, \citet{Carattini2022} outlines the political challenges in developing countries.
+Issues regarding dental care access have also been explored \citep{ClermontNietoAlpertYaoCothron2025}.
+
+\subsection{Economic Perspectives}
+The "Yellow Vests" movement highlighted pessimistic beliefs regarding policies \citep{DouenneFabre2022}.
+Previous surveys have analyzed public views on economic growth \citep{DrewsVanDenBergh2016a, DrewsVanDenBergh2016b}.
+Trust in politicians remains a key factor \citep{HammarJagers2006}.
 
 \section{Methodology}
 Describe the research design, data, and analysis.
@@ -201,14 +200,8 @@ Summarize contributions, limitations, and future research directions.
 \section*{Declaration of competing interest}
 The authors declare no competing interests.
 
-\section*{Acknowledgements}
-(Optional)
-
-\section*{Funding}
-(Optional)
-
 % =========================================================
-% REFERENCES (APA-like author–year)
+% REFERENCES
 % =========================================================
 \bibliography{references}
 
