@@ -10,6 +10,9 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
+          # Menggunakan xelatex agar mendukung font dan karakter khusus akademik
+          args: "-pdf -xe -f"
+          compiler: latexmk
       - name: Upload PDF
         uses: actions/upload-artifact@v3
         with:
