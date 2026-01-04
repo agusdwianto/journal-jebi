@@ -27,7 +27,6 @@ jobs:
         with:
           root_file: main.tex
           latexmk_use_xelatex: true
-          # Biar build konsisten (opsional)
           os: debian
           texlive_version: 2025
 
@@ -38,3 +37,17 @@ jobs:
           path: main.pdf
           if-no-files-found: error
           retention-days: 30
+
+      - name: Upload LaTeX logs (debug)
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: latex-logs
+          path: |
+            *.log
+            *.blg
+            *.bbl
+            *.bcf
+            *.run.xml
+          if-no-files-found: ignore
+          retention-days: 7
