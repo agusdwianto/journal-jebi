@@ -1,155 +1,154 @@
+%% OPSI PENTING:
+%% 5p = Format 2 kolom penuh (Final version)
+%% times = Font Times New Roman standar Elsevier
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
-% =========================================================
-%  TEMPLATE "ANTI-GAGAL" JEBI / ELSEVIER
-%  Gunakan ini untuk tes build pertama kali.
-% =========================================================
-
-% 1. Paket Standar
+%% --- PAKET STANDAR ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{microtype}
-\usepackage{geometry}
-\geometry{a4paper,left=1.6cm,right=1.6cm,top=2.0cm,bottom=2.0cm}
-
-% 2. Grafik & Tabel
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs} % Untuk tabel garis rapi
 \usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{cuted} % Untuk header lebar penuh (strip)
+\usepackage{xcolor}
 
-% 3. Link PDF
+%% --- PAKET HEADER KUSTOM (KUNCI AGAR 3 GAMBAR RAPI) ---
+\usepackage{fancyhdr}
+\usepackage{geometry}
+
+%% Atur margin agar ada ruang khusus di atas untuk 3 gambar
+%% 'top=3.5cm' memberikan ruang yang cukup agar gambar tidak menabrak judul
+\geometry{
+    top=3.5cm,      
+    bottom=2.5cm, 
+    left=1.5cm, 
+    right=1.5cm,
+    headheight=2.5cm, % Tinggi area khusus gambar header
+    includehead
+}
+
+%% --- DEFINISI HEADER HALAMAN PERTAMA (3 GAMBAR WAJIB) ---
+\fancypagestyle{firstpage}{
+    \fancyhf{} % Bersihkan header default
+    \renewcommand{\headrulewidth}{1pt} % Garis tipis di bawah gambar (opsional, bisa dihapus)
+    
+    %% Posisi Gambar: Kiri (Logo), Tengah (Homepage), Kanan (Cover)
+    %% Gunakan 'keepaspectratio' agar gambar tidak gepeng
+    %% Menggunakan 'example-image' jika file tidak ditemukan
+    \fancyhead[L]{\IfFileExists{logo_jebi.jpg}{\includegraphics[height=1.5cm, keepaspectratio]{logo_jebi.jpg}}{\includegraphics[height=1.5cm]{example-image-a}}} 
+    \fancyhead[C]{\IfFileExists{homepage_jebi.jpg}{\includegraphics[height=1.5cm, keepaspectratio]{homepage_jebi.jpg}}{\includegraphics[height=1.5cm]{example-image-b}}}
+    \fancyhead[R]{\IfFileExists{cover_jebi.jpg}{\includegraphics[height=1.5cm, keepaspectratio]{cover_jebi.jpg}}{\includegraphics[height=1.5cm]{example-image-c}}}
+}
+
+%% --- HEADER HALAMAN SELANJUTNYA (NAMA JURNAL SAJA) ---
+%% Halaman 2 dst tidak perlu gambar besar, cukup teks nama jurnal agar enak dibaca
+\fancypagestyle{standardpage}{
+    \fancyhf{}
+    \fancyhead[R]{\footnotesize \itshape Journal Economic Business Innovation (JEBI)}
+    \fancyhead[L]{\footnotesize \itshape Vol. 1, No. 1, 2026}
+    \fancyfoot[C]{\thepage} % Nomor halaman otomatis di tengah bawah
+}
+
+%% --- SETTING LINK BIRU (STANDAR SCIENCEDIRECT) ---
 \usepackage{hyperref}
-\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={JEBI Article}
+}
 
-% 4. Sitasi (APA Style)
-\usepackage[authoryear,round]{natbib}
-\bibliographystyle{elsarticle-harv}
+%% --- HILANGKAN TULISAN "Preprint submitted to..." ---
+\makeatletter
+\def\ps@pprintTitle{%
+     \let\@oddhead\@empty
+     \let\@evenhead\@empty
+     \def\@oddfoot{\footnotesize\itshape
+       Journal Economic Business Innovation (JEBI) \hfill \today}%
+     \let\@evenfoot\@oddfoot}
+\makeatother
 
-% 5. Identitas Jurnal
 \journal{Journal Economic Business Innovation (JEBI)}
-\newcommand{\TopLineLeft}{Journal of Business Research 202 (2026) 115796}
 
 \begin{document}
 
-% =========================================================
-%  HEADER / BRANDING (SAFE MODE)
-%  Saya ganti gambar dengan KOTAK KOSONG (\framebox)
-%  agar GitHub tidak error mencari file gambar yg belum ada.
-% =========================================================
-\begin{strip}
-  \vspace{-1.5cm}
-  \noindent\centering
-  {\small \TopLineLeft}\par
-  \vspace{6pt}
-  \hrule height 0.4pt
-  \vspace{10pt}
+%% --- PENGATURAN NOMOR HALAMAN ---
+%% Ubah angka 1 di bawah ini jika ingin mulai dari halaman lain (misal: 455)
+\setcounter{page}{1}
 
-  \noindent
-  % --- Logo Kiri ---
-  \begin{minipage}[c]{0.18\textwidth}
-    \centering
-    \framebox[\textwidth][c]{\textbf{LOGO HERE}} 
-    % Nanti jika file sudah ada, ganti baris atas dengan:
-    % \includegraphics[width=\textwidth]{logo_jebi.jpg}
-  \end{minipage}\hfill
-  % --- Teks Tengah ---
-  \begin{minipage}[c]{0.64\textwidth}
-    \centering
-    {\small Contents lists available at \textbf{ScienceDirect}}\par
-    \vspace{4pt}
-    {\Large \textbf{Journal of Business Research}}\par
-    \vspace{4pt}
-    \framebox[0.9\textwidth][c]{BANNER HOMEPAGE HERE}
-  \end{minipage}\hfill
-  % --- Cover Kanan ---
-  \begin{minipage}[c]{0.14\textwidth}
-    \raggedleft
-    \framebox[\textwidth][c]{\textbf{COVER}}
-  \end{minipage}
+%% --- AKTIFKAN HEADER 3 GAMBAR KHUSUS HALAMAN 1 ---
+\thispagestyle{firstpage}
+\pagestyle{standardpage} % Halaman 2 dst pakai header teks biasa
 
-  \vspace{10pt}
-  \hrule height 0.8pt
-  \vspace{10pt}
-\end{strip}
-
-% =========================================================
-%  JUDUL & PENULIS (Copy dari Word ke sini)
-% =========================================================
 \begin{frontmatter}
 
-\title{Judul Artikel Dari File Word Penulis Masukkan Disini}
+%% --- JUDUL & PENULIS (TETAP RAPI DI BAWAH GAMBAR) ---
+\title{Digital Transformation in Emerging Markets: A Strategic Framework for Sustainable Economic Growth}
 
-\author[1]{Nama Penulis Satu\corref{cor1}}
-\ead{email@domain.com}
-\author[2]{Nama Penulis Dua}
+\author[1]{First Author Name\corref{cor1}}
+\ead{author@analysisdata.co.id}
+\author[2]{Second Author Name}
 
 \cortext[cor1]{Corresponding author.}
-\address[1]{Afiliasi Penulis Satu, Kota, Negara}
-\address[2]{Afiliasi Penulis Dua, Kota, Negara}
+\address[1]{PT. Inovasi Analisis Data, Semarang 50266, Indonesia}
+\address[2]{Faculty of Economics, University Name, Country}
 
-% Abstract dikosongkan disini, kita pakai layout khusus di bawah
+%% --- ABSTRAK (Format Kotak Rapi) ---
+\begin{abstract}
+\textbf{Purpose:} This study investigates the impact of digital transformation strategies on economic sustainability in emerging markets.
+\textbf{Design/methodology/approach:} Using a quantitative approach, data were collected from 150 geographically diverse samples and analyzed using structural equation modeling (SEM).
+\textbf{Findings:} The results indicate a significant positive correlation between digital infrastructure investment and long-term business resilience.
+\textbf{Originality/value:} This research provides a novel framework for policymakers in developing regions to integrate technology into traditional economic sectors.
+\end{abstract}
+
+%% --- KATA KUNCI ---
+\begin{keyword}
+Digital Economy \sep Business Strategy \sep Innovation \sep Sustainability \sep JEBI
+\end{keyword}
+
 \end{frontmatter}
 
-% =========================================================
-%  ABSTRAK & INFO ARTIKEL (Gaya JBR)
-% =========================================================
-\begin{strip}
-  \noindent\rule{\textwidth}{0.4pt}
-  \vspace{6pt}
-  \noindent
-  \begin{minipage}[t]{0.30\textwidth}
-    \textbf{\small ARTICLE INFO}\par
-    \small
-    \textit{Keywords:}\par
-    Digital transformation\par
-    Strategy\par
-    Innovation\par
-    \vspace{6pt}
-    \textit{Article history:}\par
-    Received 2026\par
-    Accepted 2026\par
-  \end{minipage}%
-  \hfill
-  \begin{minipage}[t]{0.66\textwidth}
-    \textbf{\small ABSTRACT}\par
-    \small
-    % --- PASTE ABSTRAK DARI WORD DI BAWAH INI ---
-    Ini adalah tempat Anda menempelkan (paste) abstrak dari file Word penulis. 
-    Bagian ini akan tampil melebar dan rapi sesuai standar Elsevier. 
-    Pastikan Anda tidak menghapus perintah `minipage` di sekitarnya.
-    % ---------------------------------------------
-  \end{minipage}
-  \vspace{6pt}
-  \noindent\rule{\textwidth}{0.4pt}
-  \vspace{10pt}
-\end{strip}
-
-% =========================================================
-%  ISI NASKAH (Copy-Paste dari Word per Bab)
-% =========================================================
+%% === MULAI ISI ARTIKEL (2 KOLOM OTOMATIS) ===
 
 \section{Introduction}
-% Paste Pendahuluan dari Word di sini
-Ini adalah contoh paragraf pendahuluan. Dalam proses layout, Anda mengambil teks dari Word dan menempelkannya di sini. Jangan lupa untuk menambahkan sitasi dengan perintah seperti ini \citep{Vial2019}.
+The rapid evolution of digital technology has fundamentally altered the global economic landscape. In the context of emerging markets, this transformation presents both significant challenges and unprecedented opportunities. As noted in recent studies, the integration of digital tools is essential for modern business survival \cite{JEBI2026}.
+
+This paper explores the intersection of economic policy and business innovation. By leveraging the framework established by the \textit{Journal Economic Business Innovation} (JEBI), we aim to provide empirical evidence supporting digital adoption.
 
 \section{Literature Review}
-% Paste Tinjauan Pustaka di sini
-Penelitian terdahulu menunjukkan hasil yang beragam. Menurut \citet{Verhoef2021}, transformasi digital adalah kunci.
+\subsection{Theories of Innovation}
+Innovation theory suggests that technological advancement is the primary driver of economic growth. Previous research has demonstrated that companies adopting agile methodologies outperform their traditional counterparts.
+
+\subsection{Business Resilience}
+Resilience is defined as the capacity to recover quickly from difficulties. In a business context, this involves the ability to pivot strategies in response to market disruptions.
 
 \section{Methodology}
-% Paste Metodologi di sini
-Jelaskan metode penelitian di sini.
+This study employs a descriptive quantitative method. Data collection was conducted through structured surveys distributed to industry leaders in Semarang and surrounding areas.
 
-\section{Results}
-% Paste Hasil di sini
-Tuliskan hasil penelitian.
+\section{Results and Discussion}
+The analysis reveals that 75\% of respondents believe digital innovation is critical. 
+
+%% CONTOH TABEL RAPI
+\begin{table}[h]
+    \centering
+    \caption{Impact of Innovation on Revenue}
+    \begin{tabular}{l c c}
+        \toprule
+        \textbf{Variable} & \textbf{Coefficient} & \textbf{P-Value} \\
+        \midrule
+        Digital Adoption & 0.45 & < 0.05 \\
+        Market Agility   & 0.32 & < 0.01 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \section{Conclusion}
-% Paste Kesimpulan di sini
-Tuliskan kesimpulan.
+In conclusion, this study confirms that digital transformation is not merely a trend but a necessity for economic sustainability.
 
-% =========================================================
-%  DAFTAR PUSTAKA
-% =========================================================
+%% --- DAFTAR PUSTAKA ---
+\bibliographystyle{elsarticle-num} 
 \bibliography{references}
 
 \end{document}
