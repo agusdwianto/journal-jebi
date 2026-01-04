@@ -1,132 +1,209 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
-% --- Standard Packages & Encoding ---
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel} % Set to English for academic standard
-\usepackage{microtype}      % Improves text justification
-\usepackage{lipsum}         % For dummy text generation (optional)
+% =========================================================
+% JEBI FINAL TEMPLATE (Two-column) — XeLaTeX friendly
+% =========================================================
 
-% --- Graphics & Layout Packages ---
-\usepackage{graphicx}
+% --- Language & typography ---
+\usepackage[english]{babel}
+\usepackage{microtype}
+
+% --- Font (XeLaTeX) ---
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes} % mirip Times, aman di server CI
+
+% --- Layout ---
 \usepackage{geometry}
-\usepackage{cuted}          % REQUIRED: For full-width headers in two-column mode
-\usepackage{xcolor}
-\usepackage{booktabs}       % For professional looking tables
+\geometry{a4paper,left=1.5cm,right=1.5cm,top=2.2cm,bottom=2.0cm}
 
-% --- Hyperlink Setup (Clickable PDF) ---
+% --- Graphics / tables ---
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{cuted} % full-width area in two-column (banner page-1)
+
+% --- Links ---
 \usepackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    urlcolor=blue,
-    pdftitle={Journal Economic Business Innovation (JEBI)},
-    pdfauthor={JEBI Author}
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
 }
 
-% --- Margin Configuration ---
-\geometry{left=1.5cm,right=1.5cm,top=2cm,bottom=2cm}
+% --- Header / Footer like published JEBI ---
+\usepackage{fancyhdr}
+\usepackage{lastpage}
 
-% --- Journal Identity ---
+% --- Boxes for Article Info / Keywords ---
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newtcolorbox{jebibox}{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=black!35,
+  boxrule=0.4pt,
+  arc=0pt,
+  left=6pt,right=6pt,top=6pt,bottom=6pt
+}
+
+% -----------------------------
+% JEBI Metadata (EDIT THESE)
+% -----------------------------
+\newcommand{\JEBIISSN}{3047-4108}
+\newcommand{\JEBIPISSN}{3048-3751}
+\newcommand{\JEBIVol}{02}
+\newcommand{\JEBIIssue}{3}
+\newcommand{\JEBIYear}{2025}
+\newcommand{\JEBIPageStart}{455}
+\newcommand{\JEBIPageEnd}{474}
+\newcommand{\JEBIDoi}{https://doi.org/10.69725/jebi.v2i3.317}
+
 \journal{Journal Economic Business Innovation (JEBI)}
 
+% -----------------------------
+% Fancy header/footer (all pages)
+% -----------------------------
+\pagestyle{fancy}
+\fancyhf{}
+
+% Header line 1: ISSN
+\fancyhead[L]{\small ISSN: \JEBIISSN\quad P-ISSN: \JEBIPISSN}
+
+% Header line 2: Journal + Vol/Issue/Year/Page
+\fancyhead[C]{\small Journal Economic Business Innovation -JEBI, Vol. \JEBIVol, Issue.\JEBIIssue, \JEBIYear,\ Page.\ \JEBIPageStart--\JEBIPageEnd}
+
+% Header line 3: DOI (right)
+\fancyhead[R]{\small DOI:\ \href{\JEBIDoi}{\JEBIDoi}}
+
+% Footer: license + page number (mirip gaya terbitan)
+\fancyfoot[L]{\small \textcopyright\ \JEBIYear\ JEBI by PT. Inovasi Analisis Data\quad|\quad CC BY-SA 4.0}
+\fancyfoot[R]{\small \thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% =========================================================
 \begin{document}
 
-% === JEBI CUSTOM BRANDING HEADER ===
+% =========================================================
+% PAGE-1 BRANDING BANNER (full width)
+% =========================================================
 \begin{strip}
-    \vspace{-1.5cm}
-    \noindent
-    \begin{minipage}[c]{0.18\textwidth}
-        \includegraphics[width=\textwidth]{logo_jebi.jpg} 
-    \end{minipage}%
-    \hfill
-    \begin{minipage}[c]{0.60\textwidth}
-        \centering
-        \includegraphics[width=0.95\textwidth]{homepage_jebi.jpg}
-    \end{minipage}%
-    \hfill
-    \begin{minipage}[c]{0.18\textwidth}
-        \raggedleft
-        \includegraphics[width=\textwidth]{cover_jebi.jpg}
-    \end{minipage}
-    \vspace{5pt}
-    \hrule height 1pt
-    \vspace{10pt}
-\end{strip}
-% ===================================
+  \vspace{-1.2cm}
+  \noindent
+  \begin{minipage}[c]{0.18\textwidth}
+    \includegraphics[width=\textwidth]{logo_jebi.jpg}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.60\textwidth}
+    \centering
+    \includegraphics[width=0.95\textwidth]{homepage_jebi.jpg}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.18\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{cover_jebi.jpg}
+  \end{minipage}
 
+  \vspace{6pt}
+  \hrule height 1pt
+  \vspace{8pt}
+\end{strip}
+
+% =========================================================
+% FRONTMATTER
+% =========================================================
 \begin{frontmatter}
 
-% --- Title ---
-\title{Digital Transformation in Emerging Markets: A Strategic Framework for Sustainable Economic Growth}
+\title{YOUR ARTICLE TITLE HERE}
 
-% --- Authors & Affiliations ---
 \author[1]{First Author Name\corref{cor1}}
-\ead{author@analysisdata.co.id}
+\ead{first.author@email.com}
 
 \author[2]{Second Author Name}
+\ead{second.author@email.com}
 
-\cortext[cor1]{Corresponding author}
+\cortext[cor1]{Corresponding author.}
+\address[1]{Affiliation 1, City, Country}
+\address[2]{Affiliation 2, City, Country}
 
-\address[1]{PT. Inovasi Analisis Data, Semarang 50266, Indonesia}
-\address[2]{Department of Economics, University Name, Country}
+% --- Article info / correspondence / keywords boxes (page-1)
+% Tip: letakkan sesudah author agar mirip PDF terbit
+\vspace{6pt}
 
-% --- Abstract ---
+\begin{jebibox}
+\textbf{ARTICLE INFO}\\
+Article history:\\
+Received: DD Month YYYY\\
+Revised: DD Month YYYY\\
+Accepted: DD Month YYYY\\
+Published: DD Month YYYY
+\end{jebibox}
+
+\begin{jebibox}
+\textbf{Correspondence to:}\\
+First Author Name\\
+Email: first.author@email.com
+\end{jebibox}
+
+\begin{jebibox}
+\textbf{Keywords:}\\
+keyword1; keyword2; keyword3; keyword4
+\end{jebibox}
+
+% --- Abstract
 \begin{abstract}
-\textbf{Purpose:} This study aims to investigate the impact of digital transformation strategies on the economic sustainability of emerging markets. 
-\textbf{Design/methodology/approach:} Using a quantitative approach, data were collected from 150 geographically diverse samples and analyzed using structural equation modeling.
-\textbf{Findings:} The results indicate a significant positive correlation between digital infrastructure investment and long-term business resilience.
-\textbf{Originality/value:} This research provides a novel framework for policymakers in developing regions to integrate technology into traditional economic sectors.
+\textbf{Purpose:} ...\\
+\textbf{Design/methodology/approach:} ...\\
+\textbf{Findings:} ...\\
+\textbf{Originality/value:} ...
 \end{abstract}
 
-% --- Keywords ---
 \begin{keyword}
-Digital Economy \sep Business Strategy \sep Innovation \sep Sustainability \sep JEBI
+keyword1 \sep keyword2 \sep keyword3 \sep keyword4
 \end{keyword}
 
 \end{frontmatter}
 
-% === MAIN MANUSCRIPT CONTENT ===
+% =========================================================
+% MAIN CONTENT
+% =========================================================
 
 \section{Introduction}
-The rapid evolution of digital technology has fundamentally altered the global economic landscape. In the context of emerging markets, this transformation presents both significant challenges and unprecedented opportunities. As noted in recent studies, the integration of digital tools is essential for modern business survival \cite{JEBI2026}.
-
-This paper explores the intersection of economic policy and business innovation. By leveraging the framework established by the \textit{Journal Economic Business Innovation} (JEBI), we aim to provide empirical evidence supporting digital adoption.
+Write your introduction here.
 
 \section{Literature Review}
-\subsection{Theories of Economic Innovation}
-Innovation theory suggests that technological advancement is the primary driver of economic growth. Previous research has demonstrated that companies adopting agile methodologies outperform their traditional counterparts.
-
-\subsection{Business Resilience in the Digital Age}
-Resilience is defined as the capacity to recover quickly from difficulties. In a business context, this involves the ability to pivot strategies in response to market disruptions.
+Write literature review here.
 
 \section{Methodology}
-This study employs a descriptive quantitative method. Data collection was conducted through structured surveys distributed to industry leaders in Semarang and surrounding areas.
+Write methodology here.
 
 \section{Results and Discussion}
-The analysis reveals that 75\% of respondents believe digital innovation is critical. 
-\begin{table}[h]
-    \centering
-    \caption{Impact of Innovation on Revenue}
-    \begin{tabular}{lcc}
-        \toprule
-        \textbf{Variable} & \textbf{Coefficient} & \textbf{P-Value} \\
-        \midrule
-        Digital Adoption & 0.45 & < 0.05 \\
-        Market Agility   & 0.32 & < 0.01 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-As shown in Table 1, there is a strong statistical significance. This supports the hypothesis that innovation directly influences revenue streams.
+Write results and discussion here.
 
 \section{Conclusion}
-In conclusion, this study confirms that digital transformation is not merely a trend but a necessity for economic sustainability. Future research should focus on the specific barriers to entry for small enterprises.
+Write conclusion here.
 
-% === AUTOMATED BIBLIOGRAPHY ===
-% This will pull data from references.bib automatically
-\bibliographystyle{elsarticle-num} 
+\section*{Declaration of Competing Interest}
+The authors declare that they have no known competing financial interests or personal relationships.
+
+\section*{Acknowledgements}
+(Optional)
+
+\section*{Funding}
+(Optional)
+
+% =========================================================
+% REFERENCES (choose ONE style)
+% =========================================================
+% A) Author-year (mirip daftar pustaka jurnal pada PDF terbit)
+\usepackage{natbib}
+\bibliographystyle{elsarticle-harv}
+
+% If you prefer numeric, comment 2 lines above and use:
+% \bibliographystyle{elsarticle-num}
+
 \bibliography{references}
 
 \end{document}
