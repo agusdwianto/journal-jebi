@@ -1,27 +1,43 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
 % =========================================================
-% JEBI FINAL TEMPLATE (Two-column) — XeLaTeX friendly
+% Elsevier (JBR-like) two-column + APA 7 (author–year)
+% XeLaTeX friendly
 % =========================================================
+
+% --- Fonts (XeLaTeX) ---
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes} % Times-like, aman di CI
 
 % --- Language & typography ---
 \usepackage[english]{babel}
 \usepackage{microtype}
 
-% --- Font (XeLaTeX) ---
-\usepackage{fontspec}
-\setmainfont{TeX Gyre Termes} % mirip Times, aman di server CI
-
 % --- Layout ---
 \usepackage{geometry}
-\geometry{a4paper,left=1.5cm,right=1.5cm,top=2.2cm,bottom=2.0cm}
+\geometry{a4paper,left=1.8cm,right=1.8cm,top=2.0cm,bottom=2.0cm}
 
 % --- Graphics / tables ---
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{cuted} % full-width area in two-column (banner page-1)
 
-% --- Links ---
+% --- Full-width blocks in two-column ---
+\usepackage{cuted}
+
+% --- Boxes (for ARTICLE INFO / ABSTRACT like JBR) ---
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newtcolorbox{jbrbox}{
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=black!35,
+  boxrule=0.4pt,
+  arc=0pt,
+  left=8pt,right=8pt,top=8pt,bottom=8pt
+}
+
+% --- Hyperlinks ---
 \usepackage{hyperref}
 \hypersetup{
   colorlinks=true,
@@ -30,163 +46,161 @@
   urlcolor=blue
 }
 
-% --- Header / Footer like published JEBI ---
-\usepackage{fancyhdr}
-\usepackage{lastpage}
+% --- APA 7 author–year citations (Elsevier-compatible) ---
+\usepackage[authoryear]{natbib}
 
-% --- Boxes for Article Info / Keywords ---
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable}
-\newtcolorbox{jebibox}{
-  enhanced,
-  breakable,
-  colback=white,
-  colframe=black!35,
-  boxrule=0.4pt,
-  arc=0pt,
-  left=6pt,right=6pt,top=6pt,bottom=6pt
-}
-
-% -----------------------------
-% JEBI Metadata (EDIT THESE)
-% -----------------------------
-\newcommand{\JEBIISSN}{3047-4108}
-\newcommand{\JEBIPISSN}{3048-3751}
-\newcommand{\JEBIVol}{02}
-\newcommand{\JEBIIssue}{3}
-\newcommand{\JEBIYear}{2025}
-\newcommand{\JEBIPageStart}{455}
-\newcommand{\JEBIPageEnd}{474}
-\newcommand{\JEBIDoi}{https://doi.org/10.69725/jebi.v2i3.317}
-
+% Journal name (optional)
 \journal{Journal Economic Business Innovation (JEBI)}
 
-% -----------------------------
-% Fancy header/footer (all pages)
-% -----------------------------
-\pagestyle{fancy}
-\fancyhf{}
-
-% Header line 1: ISSN
-\fancyhead[L]{\small ISSN: \JEBIISSN\quad P-ISSN: \JEBIPISSN}
-
-% Header line 2: Journal + Vol/Issue/Year/Page
-\fancyhead[C]{\small Journal Economic Business Innovation -JEBI, Vol. \JEBIVol, Issue.\JEBIIssue, \JEBIYear,\ Page.\ \JEBIPageStart--\JEBIPageEnd}
-
-% Header line 3: DOI (right)
-\fancyhead[R]{\small DOI:\ \href{\JEBIDoi}{\JEBIDoi}}
-
-% Footer: license + page number (mirip gaya terbitan)
-\fancyfoot[L]{\small \textcopyright\ \JEBIYear\ JEBI by PT. Inovasi Analisis Data\quad|\quad CC BY-SA 4.0}
-\fancyfoot[R]{\small \thepage}
-
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
 % =========================================================
+% (OPTIONAL) Top banner like Elsevier/JBR
+% You can replace images or text as needed
+% =========================================================
+\newcommand{\TopLineLeft}{Journal of Business Research 202 (2026) 115796} % contoh
+\newcommand{\TopLineURL}{\href{https://www.elsevier.com/locate/jbusres}{www.elsevier.com/locate/jbusres}}
+
 \begin{document}
 
 % =========================================================
-% PAGE-1 BRANDING BANNER (full width)
+% TOP HEADER (JBR-like)
 % =========================================================
 \begin{strip}
   \vspace{-1.2cm}
   \noindent
+  \centering
+  {\small \TopLineLeft}\par
+  \vspace{6pt}
+  \hrule height 0.4pt
+  \vspace{10pt}
+
+  % Banner block
+  \noindent
   \begin{minipage}[c]{0.18\textwidth}
-    \includegraphics[width=\textwidth]{logo_jebi.jpg}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}[c]{0.60\textwidth}
+    % Optional: Elsevier tree/logo placeholder (replace with your image if you have it)
+    % \includegraphics[width=\textwidth]{elsevier_logo.png}
     \centering
-    \includegraphics[width=0.95\textwidth]{homepage_jebi.jpg}
+    {\Large \textsc{ELSEVIER}}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.62\textwidth}
+    \centering
+    {\small Contents lists available at \textbf{ScienceDirect}}\par
+    \vspace{4pt}
+    {\Large \textbf{Journal of Business Research}}\par
+    \vspace{4pt}
+    {\small journal homepage:\ \TopLineURL}\par
   \end{minipage}%
   \hfill
   \begin{minipage}[c]{0.18\textwidth}
-    \raggedleft
-    \includegraphics[width=\textwidth]{cover_jebi.jpg}
+    \centering
+    % Optional: journal cover placeholder
+    % \includegraphics[width=\textwidth]{journal_cover.png}
+    {\fbox{\parbox[c][2.2cm][c]{0.95\textwidth}{\centering Cover}}}
   \end{minipage}
 
-  \vspace{6pt}
-  \hrule height 1pt
-  \vspace{8pt}
+  \vspace{10pt}
+  \hrule height 0.8pt
+  \vspace{10pt}
 \end{strip}
 
 % =========================================================
-% FRONTMATTER
+% FRONTMATTER (Elsevier standard)
 % =========================================================
 \begin{frontmatter}
 
-\title{YOUR ARTICLE TITLE HERE}
+\title{Digital transformation as a multi-phase process: a longitudinal study of corporate strategy and business unit adaptation}
 
-\author[1]{First Author Name\corref{cor1}}
-\ead{first.author@email.com}
-
-\author[2]{Second Author Name}
-\ead{second.author@email.com}
+% Authors (contoh)
+\author[inst1]{First Author\corref{cor1}}
+\author[inst2]{Second Author}
+\author[inst1]{Third Author}
 
 \cortext[cor1]{Corresponding author.}
-\address[1]{Affiliation 1, City, Country}
-\address[2]{Affiliation 2, City, Country}
+\ead{first.author@email.com}
 
-% --- Article info / correspondence / keywords boxes (page-1)
-% Tip: letakkan sesudah author agar mirip PDF terbit
-\vspace{6pt}
+\address[inst1]{Department of Management, University Name, City, Country}
+\address[inst2]{Department of Economics, University Name, City, Country}
 
-\begin{jebibox}
-\textbf{ARTICLE INFO}\\
-Article history:\\
-Received: DD Month YYYY\\
-Revised: DD Month YYYY\\
-Accepted: DD Month YYYY\\
-Published: DD Month YYYY
-\end{jebibox}
-
-\begin{jebibox}
-\textbf{Correspondence to:}\\
-First Author Name\\
-Email: first.author@email.com
-\end{jebibox}
-
-\begin{jebibox}
-\textbf{Keywords:}\\
-keyword1; keyword2; keyword3; keyword4
-\end{jebibox}
-
-% --- Abstract
-\begin{abstract}
-\textbf{Purpose:} ...\\
-\textbf{Design/methodology/approach:} ...\\
-\textbf{Findings:} ...\\
-\textbf{Originality/value:} ...
-\end{abstract}
-
-\begin{keyword}
-keyword1 \sep keyword2 \sep keyword3 \sep keyword4
-\end{keyword}
+% NOTE:
+% Kita sengaja TIDAK pakai abstract default di sini,
+% karena abstract akan kita tata ulang seperti JBR (dua kolom box) setelah frontmatter.
 
 \end{frontmatter}
 
 % =========================================================
-% MAIN CONTENT
+% ARTICLE INFO (left) + ABSTRACT (right) in one full-width row
 % =========================================================
+\begin{strip}
+  \noindent
+  \begin{minipage}[t]{0.30\textwidth}
+    \begin{jbrbox}
+      {\small\textbf{ARTICLE INFO}}\par
+      \vspace{6pt}
+      {\small\textbf{Keywords:}}\par
+      {\small Digital transformation}\par
+      {\small Corporate strategy}\par
+      {\small Organizational tension}\par
+      {\small Structural adjustment}\par
+      {\small Business unit adaptation}\par
+      {\small Process perspective}\par
+      \vspace{10pt}
+      {\small\textbf{JEL classification:}}\par
+      {\small M10; M15; O33}\par
+      \vspace{10pt}
+      {\small\textbf{Article history:}}\par
+      {\small Received 26 February 2024}\par
+      {\small Revised 14 October 2025}\par
+      {\small Accepted 16 October 2025}\par
+      {\small Available online 27 October 2025}\par
+    \end{jbrbox}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.66\textwidth}
+    \begin{jbrbox}
+      {\small\textbf{ABSTRACT}}\par
+      \vspace{6pt}
+      \small
+      This study investigates how digital transformation unfolds over time within a multi-business manufacturing firm.
+      Drawing on a longitudinal case study, we trace the dynamics of digital transformation across empirically derived phases:
+      experimentation, consolidation, and acceleration. We identify recurring tensions between corporate strategy and business unit adaptation,
+      and show how structural adjustments, capability building, and organizational alignment shape outcomes.
+      The findings advance process-oriented perspectives on strategy by demonstrating how recursive patterns of tension,
+      structural change, and organizational adaptation drive digital transformation in complex, multi-level firms.
+    \end{jbrbox}
+  \end{minipage}
 
+  \vspace{10pt}
+\end{strip}
+
+% =========================================================
+% MAIN TEXT (two-column)
+% =========================================================
 \section{Introduction}
-Write your introduction here.
+Emerging digital technologies create disruptive challenges and opportunities for firms.
+Prior studies emphasize that digital transformation often unfolds as a multi-phase process \citep{Vial2019, Warner2019}.
+According to \citet{Hanelt2021}, transformation initiatives frequently involve tensions between legacy structures and new capabilities.
 
-\section{Literature Review}
-Write literature review here.
+\section{Literature review}
+Write your literature review here. Use APA author–year citations:
+\begin{itemize}
+  \item Narrative: \citet{Vial2019} argues that \dots
+  \item Parenthetical: \citep{Warner2019, Hanelt2021}
+\end{itemize}
 
 \section{Methodology}
-Write methodology here.
+Describe the research design, data, and analysis.
 
-\section{Results and Discussion}
-Write results and discussion here.
+\section{Results}
+Present results with figures and tables.
+
+\section{Discussion}
+Interpret results and connect to literature.
 
 \section{Conclusion}
-Write conclusion here.
+Summarize contributions and implications.
 
-\section*{Declaration of Competing Interest}
-The authors declare that they have no known competing financial interests or personal relationships.
+\section*{Declaration of competing interest}
+The authors declare no competing interests.
 
 \section*{Acknowledgements}
 (Optional)
@@ -195,15 +209,9 @@ The authors declare that they have no known competing financial interests or per
 (Optional)
 
 % =========================================================
-% REFERENCES (choose ONE style)
+% REFERENCES — APA-like author–year (Elsevier Harvard)
 % =========================================================
-% A) Author-year (mirip daftar pustaka jurnal pada PDF terbit)
-\usepackage{natbib}
 \bibliographystyle{elsarticle-harv}
-
-% If you prefer numeric, comment 2 lines above and use:
-% \bibliographystyle{elsarticle-num}
-
 \bibliography{references}
 
 \end{document}
