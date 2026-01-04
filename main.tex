@@ -1,28 +1,23 @@
 \documentclass[final,5p,times,twocolumn]{elsarticle}
 
 % =========================================================
-%  JEBI / Elsevier-style Manuscript Template (APA 7)
-%  Engine recommended: XeLaTeX (works with your CI)
+% CLEAN FINAL — Elsevier/JBR-like layout + APA 7 (author–year)
+% Engine: XeLaTeX (recommended)
 % =========================================================
 
 % ---------- Language & Typography ----------
-\usepackage[english]{babel}      % Elsevier/JBR normally English
-\usepackage{microtype}          % better justification
-\usepackage{csquotes}           % recommended for APA-ish quotes
+\usepackage[english]{babel}
+\usepackage{microtype}
 
 % ---------- Layout ----------
 \usepackage{geometry}
-\geometry{left=1.6cm,right=1.6cm,top=2.0cm,bottom=2.0cm}
+\geometry{a4paper,left=1.6cm,right=1.6cm,top=2.0cm,bottom=2.0cm}
 
-% ---------- Graphics ----------
+% ---------- Graphics / Tables ----------
 \usepackage{graphicx}
-\usepackage{cuted}              % full-width strip for branding header
-\usepackage{xcolor}
-
-% ---------- Tables ----------
 \usepackage{booktabs}
 \usepackage{threeparttable}
-\usepackage{array}
+\usepackage{cuted} % full-width strip for top banner in two-column
 
 % ---------- Links ----------
 \usepackage{hyperref}
@@ -35,56 +30,64 @@
   pdfauthor={JEBI Authors}
 }
 
-% ---------- Citations: APA 7 (Author–Year) ----------
+% ---------- APA 7 author–year citations (Elsevier-compatible) ----------
 \usepackage[authoryear,round]{natbib}
 \biboptions{authoryear,round,semicolon}
-
-% Use an Elsevier harvard-like style (closest in elsarticle family).
-% For strict APA 7 formatting you normally need biblatex-apa, but
-% Elsevier workflows commonly use natbib + elsarticle-harv.
 \bibliographystyle{elsarticle-harv}
 
 % ---------- Journal Identity ----------
 \journal{Journal Economic Business Innovation (JEBI)}
 
-% ---------- Small helpers ----------
-\newcommand{\artinfoTitle}[1]{\textbf{\sffamily\small #1}}
-\newcommand{\tight}{\setlength{\parskip}{0pt}\setlength{\itemsep}{2pt}}
+% ---------- Optional top line like JBR (edit as needed) ----------
+\newcommand{\TopLineLeft}{Journal of Business Research 202 (2026) 115796}
+\newcommand{\TopLineURL}{\href{https://www.elsevier.com/locate/jbusres}{www.elsevier.com/locate/jbusres}}
 
 \begin{document}
 
 % =========================================================
-%  TOP BRANDING STRIP (optional - uses your images)
-%  Make sure these files exist:
+% TOP BANNER (JBR-like) — uses your existing images
+% Files expected:
 %   logo_jebi.jpg, homepage_jebi.jpg, cover_jebi.jpg
 % =========================================================
 \begin{strip}
-  \vspace{-1.3cm}
+  \vspace{-1.2cm}
+  \noindent\centering
+  {\small \TopLineLeft}\par
+  \vspace{6pt}
+  \hrule height 0.4pt
+  \vspace{10pt}
+
   \noindent
   \begin{minipage}[c]{0.18\textwidth}
     \includegraphics[width=\textwidth]{logo_jebi.jpg}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.64\textwidth}
     \centering
+    {\small Contents lists available at \textbf{ScienceDirect}}\par
+    \vspace{4pt}
+    {\Large \textbf{Journal of Business Research}}\par
+    \vspace{4pt}
+    {\small journal homepage:\ \TopLineURL}\par
+    \vspace{6pt}
     \includegraphics[width=0.92\textwidth]{homepage_jebi.jpg}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.14\textwidth}
     \raggedleft
     \includegraphics[width=\textwidth]{cover_jebi.jpg}
   \end{minipage}
-  \vspace{6pt}
+
+  \vspace{10pt}
   \hrule height 0.8pt
   \vspace{10pt}
 \end{strip}
 
 % =========================================================
-%  FRONTMATTER (Elsevier standard)
+% FRONTMATTER (Elsevier standard)
 % =========================================================
 \begin{frontmatter}
 
-\title{Digital transformation as a multi-phase process: A strategic framework for emerging markets}
+\title{Digital transformation as a multi-phase process: A longitudinal study of corporate strategy and business unit adaptation}
 
-% --- Authors (example) ---
 \author[inst1]{First Author Name\corref{cor1}}
 \ead{first.author@domain.com}
 
@@ -94,72 +97,76 @@
 \cortext[cor1]{Corresponding author.}
 
 \address[inst1]{PT. Inovasi Analisis Data, Semarang 50266, Indonesia}
-\address[inst2]{Department of Economics, University Name, Country}
+\address[inst2]{Department of Management, University Name, City, Country}
 
-% --- Abstract (keep concise like JBR) ---
+% NOTE: Abstract in frontmatter is still standard Elsevier.
 \begin{abstract}
-This study investigates how digital transformation unfolds over time and how organizations align strategy, structure, and execution. Using a (method) approach with (data/source), we find that (key results). The findings contribute to (theory/practice) by (main contribution) and offer implications for (managers/policymakers).
+This study investigates how digital transformation unfolds over time within organizations. Drawing on a longitudinal design, we trace key phases of experimentation, consolidation, and acceleration. We identify recurring tensions between corporate strategy and business unit adaptation and show how structural adjustments and capability building shape outcomes. The findings advance process-oriented perspectives on strategy and provide implications for managers and policymakers.
 \end{abstract}
 
-% --- Keywords (JBR style: short, specific) ---
 \begin{keyword}
-Digital transformation \sep Corporate strategy \sep Organizational adaptation \sep Business model innovation \sep Emerging markets
+Digital transformation \sep Corporate strategy \sep Organizational adaptation \sep Business unit adaptation \sep Process perspective
 \end{keyword}
 
 \end{frontmatter}
 
 % =========================================================
-%  FIRST-PAGE "ARTICLE INFO" + "ABSTRACT" BLOCK (optional)
-%  If you want it closer to JBR screenshot: show a boxed block.
-%  NOTE: Frontmatter already has Abstract+Keywords; this is a VISUAL add-on.
+% JBR-LIKE "ARTICLE INFO" (left) + "ABSTRACT" (right) row
+% (Visual block like the screenshot; keep it short)
 % =========================================================
-\vspace{-2mm}
-\noindent\rule{\columnwidth}{0.4pt}
-\vspace{2mm}
-
-\noindent
-\begin{minipage}[t]{0.48\columnwidth}
-  \artinfoTitle{ARTICLE INFO}\par
-  \vspace{4pt}
-  \textit{Keywords:}\par
-  Digital transformation\par
-  Corporate strategy\par
-  Organizational tension\par
-  Structural adjustment\par
-  Organizational adaptation\par
+\begin{strip}
+  \noindent\rule{\textwidth}{0.4pt}
   \vspace{6pt}
-  \textit{JEL classification (optional):}\par
-  O33; L25; M10
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.48\columnwidth}
-  \artinfoTitle{ABSTRACT}\par
-  \vspace{4pt}
-  This study investigates how digital transformation unfolds over time within organizations. Drawing on (design), we trace (process) and identify (patterns). The study advances understanding of (topic) by showing (core insight) and offers implications for (practice).
-\end{minipage}
 
-\vspace{2mm}
-\noindent\rule{\columnwidth}{0.4pt}
-\vspace{3mm}
+  \noindent
+  \begin{minipage}[t]{0.30\textwidth}
+    \textbf{\small ARTICLE INFO}\par
+    \vspace{4pt}
+    \small
+    \textit{Keywords:}\par
+    Digital transformation\par
+    Corporate strategy\par
+    Organizational tension\par
+    Structural adjustment\par
+    Business unit adaptation\par
+    Process perspective\par
+    \vspace{8pt}
+    \textit{Article history:}\par
+    Received DD Month YYYY\par
+    Revised DD Month YYYY\par
+    Accepted DD Month YYYY\par
+    Available online DD Month YYYY\par
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.66\textwidth}
+    \textbf{\small ABSTRACT}\par
+    \vspace{4pt}
+    \small
+    This study examines how digital transformation unfolds over time and how organizations align strategy, structure, and execution. Using (method) and (data/source), we find that (key results). The study contributes by (main contribution) and offers implications for (practice/policy).
+  \end{minipage}
+
+  \vspace{6pt}
+  \noindent\rule{\textwidth}{0.4pt}
+  \vspace{10pt}
+\end{strip}
 
 % =========================================================
-%  MAIN MANUSCRIPT
+% MAIN MANUSCRIPT (Two-column)
 % =========================================================
-
 \section{Introduction}
-Write your introduction here. Cite with APA author--year style, e.g.,
-\citet{Vial2019} argues that digital transformation is a multi-dimensional phenomenon.
-Other studies report similar patterns \citep{Verhoef2021}.
+Emerging digital technologies create disruptive challenges and opportunities for firms.
+Prior studies emphasize that digital transformation unfolds as a multi-phase process \citep{Vial2019,Warner2019}.
+According to \citet{Hanelt2021}, transformation initiatives often involve tensions between legacy structures and new capabilities.
 
 \section{Literature review}
-\subsection{Digital transformation}
-Keep paragraphs tight, define constructs, show gap.
-
-\subsection{Business model innovation}
-Explain theory and what your paper adds.
+Use APA author--year citations:
+\begin{itemize}
+  \item Narrative: \citet{Vial2019} argues that \dots
+  \item Parenthetical: \citep{Warner2019,Hanelt2021}
+\end{itemize}
 
 \section{Methodology}
-Describe design, sample/data, measures, analysis steps.
+Describe the research design, data, and analysis.
 
 \section{Results}
 Present results with tables/figures.
@@ -183,14 +190,22 @@ Market agility   & 0.32 & < .01 \\
 \end{table}
 
 \section{Discussion}
-Interpret findings, compare with literature, theoretical and managerial implications.
+Interpret results, compare with literature, and outline implications.
 
 \section{Conclusion}
-Summarize contribution, limitations, and future research.
+Summarize contributions, limitations, and future research directions.
+
+\section*{Declaration of competing interest}
+The authors declare no competing interests.
+
+\section*{Acknowledgements}
+(Optional)
+
+\section*{Funding}
+(Optional)
 
 % =========================================================
-%  REFERENCES
-%  Use references.bib (BibTeX). Example keys: Vial2019, Verhoef2021, etc.
+% REFERENCES (APA-like author–year)
 % =========================================================
 \bibliography{references}
 
